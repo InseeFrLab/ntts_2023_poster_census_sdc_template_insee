@@ -1,0 +1,158 @@
+% Gemini theme
+% https://github.com/anishathalye/gemini
+
+% ====================
+% Definitions
+% ====================
+
+% Color Palette
+% From https://news.uchicago.edu/sites/default/files/attachments/_uchicago.identity.guidelines.pdf
+% Primary
+\definecolor{maroon}{RGB}{128, 0, 0}
+\definecolor{darkgray}{RGB}{118, 118, 118}
+\definecolor{lightgray}{RGB}{214, 214, 206}
+\definecolor{blueinsee}{RGB}{15, 65, 122}
+\definecolor{yellowinsee}{RGB}{255, 196, 0}
+\definecolor{lightblue}{RGB}{177, 217, 248}
+\definecolor{lightyellow}{RGB}{255, 236, 179}
+
+% Secondary
+\definecolor{yellow}{RGB}{248, 164, 41}
+\definecolor{orange}{RGB}{193, 102, 34}
+\definecolor{red}{RGB}{143, 57, 49}
+\definecolor{lightgreen}{RGB}{145, 171, 90}
+\definecolor{darkgreen}{RGB}{88, 89, 63}
+\definecolor{blue}{RGB}{21, 95, 131}
+\definecolor{violet}{RGB}{53, 14, 32}
+
+% ====================
+% Theme
+% ====================
+
+% Basic colors
+\setbeamercolor{palette primary}{fg=black,bg=white}
+\setbeamercolor{palette secondary}{fg=black,bg=white}
+\setbeamercolor{palette tertiary}{bg=black,fg=white}
+\setbeamercolor{palette quaternary}{fg=black,bg=white}
+\setbeamercolor{structure}{fg=violet}
+
+% Headline
+\setbeamercolor{headline}{fg=yellowinsee,bg=blueinsee}
+\setbeamercolor{headline rule}{bg=red}
+
+% Block
+\setbeamercolor{block title}{fg=blueinsee,bg=white}
+\setbeamercolor{block separator}{bg=black}
+\setbeamercolor{block body}{fg=black,bg=white}
+
+% Alert Block
+\setbeamercolor{block alerted title}{fg=blueinsee,bg=lightgray}
+\setbeamercolor{block alerted separator}{bg=black}
+\setbeamercolor{block alerted body}{fg=black,bg=lightgray}
+
+% Alert Block
+% \setbeamercolor{problock title}{fg=blueinsee,bg=lightgray}
+% \setbeamercolor{problock separator}{bg=black}
+% \setbeamercolor{problock body}{fg=black,bg=lightgray}
+
+% Heading
+\setbeamercolor{heading}{fg=black}
+
+% Itemize
+\setbeamercolor{item}{fg=darkgray}
+
+% Bibliography
+\setbeamercolor{bibliography item}{fg=black}
+\setbeamercolor{bibliography entry author}{fg=black}
+\setbeamercolor{bibliography entry title}{fg=black}
+\setbeamercolor{bibliography entry location}{fg=black}
+\setbeamercolor{bibliography entry note}{fg=black}
+\setbeamertemplate{bibliography entry article}{}
+\setbeamertemplate{bibliography entry title}{}
+\setbeamertemplate{bibliography entry location}{}
+\setbeamertemplate{bibliography entry note}{}
+
+
+%=======================
+% New block
+%=======================
+
+\newenvironment<>{problock}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=blueinsee,bg=lightyellow}
+       \setbeamercolor{block body}{fg=black,bg=lightyellow}
+       \setbeamercolor{itemize item}{fg=blueinsee}
+       % \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\setbeamertemplate{problock begin}
+{
+  \begin{beamercolorbox}[colsep*=0ex,dp=2ex,center]{problock title}
+    \vskip0pt
+    \usebeamerfont{block example title}\insertblocktitle
+    \vskip-1.25ex
+    \begin{beamercolorbox}[colsep=0.025ex]{block example separator}\end{beamercolorbox}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block example body}
+  \vskip-0.5ex
+  \begin{beamercolorbox}[colsep*=0ex]{problock body}
+  \justifying
+  \begin{adjustwidth}{1ex}{1ex}
+  \setlength{\parskip}{1ex}
+  \vskip-2ex
+}
+\setbeamertemplate{problock end}
+{
+  \end{adjustwidth}
+  \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt
+  \vspace*{2ex}
+}
+
+\newenvironment<>{backblock}[1]{%
+  \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{block title}{fg=blueinsee,bg=lightblue}
+       \setbeamercolor{block body}{fg=black,bg=lightblue}
+       \setbeamercolor{itemize item}{fg=blueinsee}
+       % \setbeamertemplate{itemize item}[triangle]
+     }%
+      \usebeamertemplate{block begin}}
+    {\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+\setbeamertemplate{backblock begin}
+{
+  \begin{beamercolorbox}[colsep*=0ex,dp=2ex,center]{problock title}
+    \vskip0pt
+    \usebeamerfont{block title}\insertblocktitle
+    \vskip-1.25ex
+    \begin{beamercolorbox}[colsep=0.025ex]{problock separator}\end{beamercolorbox}
+  \end{beamercolorbox}
+  {\parskip0pt\par}
+  \usebeamerfont{block body}
+  \vskip-0.5ex
+  \begin{beamercolorbox}[colsep*=0ex]{backblock body}
+  \justifying
+  \begin{adjustwidth}{1ex}{1ex}
+  \setlength{\parskip}{1ex}
+  \vskip-2ex
+}
+\setbeamertemplate{backblock end}
+{
+  \end{adjustwidth}
+  \vskip1ex
+  \end{beamercolorbox}
+  \vskip0pt
+  \vspace*{2ex}
+}
